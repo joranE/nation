@@ -90,7 +90,6 @@ nation_perf <- function(nations,sex = NULL,race_type = NULL){
                   id.vars = c("season","nation"),
                   value.name = "Proportion",
                   variable.name = "Level")
-  dat_sum$Proportion[dat_sum$Proportion <= 0] <- NA
   
   b <- sort(unique(dat_sum$season))
   p <- ggplot(dat_sum,aes(x = season,y = Proportion,fill = Level,group = Level)) + 
