@@ -31,18 +31,24 @@ shinyUI(
         tabItem(
           tabName = "wjcU23",
           fluidRow(
-            box(plotOutput("plotWJC"),
-                width = NULL,
-                height = 750,
-                title = "WJC History",
-                solidHeader = TRUE,
-                status = "success"),
-            box(plotOutput("plotU23"),
-                width = NULL,
-                height = 750,
-                title = "U23 History",
-                solidHeader = TRUE,
-                status = "success")
+            column(
+              width = 6,
+              box(plotOutput("plotWJC"),
+                  width = NULL,
+                  height = 725,
+                  title = "WJC History",
+                  solidHeader = TRUE,
+                  status = "success")
+            ),
+            column(
+              width = 6,
+              box(plotOutput("plotU23"),
+                  width = NULL,
+                  height = 725,
+                  title = "U23 History",
+                  solidHeader = TRUE,
+                  status = "success")
+            )
           )
         ),
         

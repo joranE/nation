@@ -25,7 +25,7 @@ wjc_plot <- function(nations){
       labs(x = NULL,y = "Finishing Place") + 
       ggtitle(x) +
       theme(axis.text.x = element_text(hjust=0,vjust=1,angle=310,
-                                       size=9,color = "black"))
+                                       size=8,color = "black"))
     p
   }
   
@@ -58,7 +58,7 @@ u23_plot <- function(nations){
       labs(x = NULL,y = "Finishing Place") + 
       ggtitle(x) +
       theme(axis.text.x = element_text(hjust=0,vjust=1,angle=310,
-                                       size=9,color = "black"))
+                                       size=8,color = "black"))
     p
   }
   

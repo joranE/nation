@@ -10,11 +10,11 @@ shinyServer(function(input, output, session) {
 
   output$plotWJC <- renderPlot({
     wjc_plot(nations = input$nationInput)
-  },height = 650,res = IMG_RES)
+  },res = IMG_RES,height = 650)
   
   output$plotU23 <- renderPlot({
     u23_plot(nations = input$nationInput)
-  },height = 650,res = IMG_RES)
+  },res = IMG_RES,height = 650)
   
   output$plotMajDstMen <- renderPlot({
     nation_perf(nations = input$nationInput,sex = "Men",race_type = "Distance")
