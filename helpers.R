@@ -7,6 +7,7 @@ library(RColorBrewer)
 MAJ_INT <- c("WC","WSC","OWG","TDS")
 
 wjc_plot <- function(nations){
+  if (nations == "" || length(nations) == 0) return(NULL)
   create_plot <- function(x){
     dat <- filter(DATA,cat1 == 'WJC' & nation == x)
     sprCutoff <- data.frame(type = c('Sprint','Sprint'),
@@ -25,7 +26,7 @@ wjc_plot <- function(nations){
       labs(x = NULL,y = "Finishing Place") + 
       ggtitle(x) +
       theme(axis.text.x = element_text(hjust=0,vjust=1,angle=310,
-                                       size=8,color = "black"))
+                                       size=7,color = "black"))
     p
   }
   
@@ -40,6 +41,7 @@ wjc_plot <- function(nations){
 }
 
 u23_plot <- function(nations){
+  if (nations == "" || length(nations) == 0) return(NULL)
   create_plot <- function(x){
     dat <- filter(DATA,cat1 == 'U23' & nation == x)
     sprCutoff <- data.frame(type = c('Sprint','Sprint'),
@@ -58,7 +60,7 @@ u23_plot <- function(nations){
       labs(x = NULL,y = "Finishing Place") + 
       ggtitle(x) +
       theme(axis.text.x = element_text(hjust=0,vjust=1,angle=310,
-                                       size=8,color = "black"))
+                                       size=7,color = "black"))
     p
   }
   
@@ -73,6 +75,7 @@ u23_plot <- function(nations){
 }
 
 nation_perf <- function(nations,sex = NULL,race_type = NULL){
+  if (nations == "" || length(nations) == 0) return(NULL)
   dat <- filter(DATA,
                 nation %in% nations & 
                   cat1 %in% MAJ_INT & 
@@ -98,7 +101,7 @@ nation_perf <- function(nations,sex = NULL,race_type = NULL){
     scale_x_discrete(breaks = b[seq(1,length(b),by = 2)]) +
     scale_fill_manual(values = rev(tail(brewer.pal(9,"Blues"),5))) +
     labs(x=NULL,y="Results Per Race",colour="") + 
-    theme(axis.text.x = element_text(angle=310,hjust=0,vjust=1,colour="black",size=9),
+    theme(axis.text.x = element_text(angle=310,hjust=0,vjust=1,colour="black",size=7),
           legend.direction = "horizontal",
           legend.position = "bottom")
   p
@@ -131,7 +134,7 @@ nation_depth <- function(nations,sex = NULL,race_type = NULL){
     scale_x_discrete(breaks = b[seq(1,length(b),by = 2)]) +
     scale_fill_manual(values = c(rev(tail(brewer.pal(7,"Blues"),6)))) +
     labs(x=NULL,y="Unique Skiers",colour="") + 
-    theme(axis.text.x = element_text(angle=310,hjust=0,vjust=1,colour="black",size=9),
+    theme(axis.text.x = element_text(angle=310,hjust=0,vjust=1,colour="black",size=7),
           legend.direction = "horizontal",
           legend.position = "bottom")
   p 
