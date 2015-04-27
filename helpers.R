@@ -9,7 +9,8 @@ MAJ_INT <- c("WC","WSC","OWG","TDS")
 wjc_plot <- function(nations){
   if (nations == "" || length(nations) == 0) return(NULL)
   create_plot <- function(x){
-    dat <- filter(DATA,cat1 == 'WJC' & nation == x)
+    dat <- filter(DATA,cat1 == 'WJC' & nation == x) %>%
+      collect()
     sprCutoff <- data.frame(type = c('Sprint','Sprint'),
                             gender = c('Men','Women'),
                             yint = c(30,30))
@@ -43,7 +44,8 @@ wjc_plot <- function(nations){
 u23_plot <- function(nations){
   if (nations == "" || length(nations) == 0) return(NULL)
   create_plot <- function(x){
-    dat <- filter(DATA,cat1 == 'U23' & nation == x)
+    dat <- filter(DATA,cat1 == 'U23' & nation == x) %>%
+      collect()
     sprCutoff <- data.frame(type = c('Sprint','Sprint'),
                             gender = c('Men','Women'),
                             yint = c(30,30))
@@ -80,7 +82,8 @@ nation_perf <- function(nations,sex = NULL,race_type = NULL){
                 nation %in% nations & 
                   cat1 %in% MAJ_INT & 
                   gender == sex & 
-                  type == race_type)
+                  type == race_type) %>%
+    collect()
   
   dat_sum <- dat %>%
     group_by(season,nation) %>%
@@ -112,7 +115,8 @@ nation_depth <- function(nations,sex = NULL,race_type = NULL){
                 nation %in% nations &
                   cat1 %in% MAJ_INT &
                   gender == sex &
-                  type == race_type)
+                  type == race_type) %>%
+    collect()
   
   dat_sum <- dat %>%
     group_by(season,nation) %>%
